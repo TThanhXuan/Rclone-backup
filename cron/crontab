@@ -1,0 +1,12 @@
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0)
+# |  |  |  |  |
+# *  *  *  *  * command to be executed
+# * * * * * rclone sync /mnt/data backup:/sg1/data --check-first --update -v  >> /var/log/backup.log 2>&1
+* * * * * cd /scripts && sh 1m.sh
+5 * * * * cd /scripts && sh 1h.sh
+4 5 * * * cd /scripts && sh 1d.sh

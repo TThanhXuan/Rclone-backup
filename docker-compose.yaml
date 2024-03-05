@@ -1,0 +1,23 @@
+version: '3'
+services:
+  rclone-backup:
+    image: rclone-backup:latest
+    # privileged: true
+    # devices:
+    #   - "/dev/fuse:/dev/fuse"
+    # cap_add:
+    #   - SYS_ADMIN
+    restart: unless-stopped
+    environment:
+      - servername=${servername}
+      # - servername=sg1
+      - RCLONE_BACKUP_1M=${RCLONE_BACKUP_1M:-false}
+      - RCLONE_BACKUP_1H=${RCLONE_BACKUP_1H:-false}
+      - RCLONE_BACKUP_1D=${RCLONE_BACKUP_1D:-false}
+      - RCLONE_BACKUP=${RCLONE_BACKUP:-false}
+    volumes:
+      - ../../data:/mnt/data
+      - ./rclone:/root/.config/rclone/
+      - ./logs/:/var/log/
+    labels:
+      - "com.centurylinklabs.watchtower.enable=false"
