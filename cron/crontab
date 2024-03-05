@@ -10,3 +10,4 @@
 * * * * * cd /scripts && sh 1m.sh
 5 * * * * cd /scripts && sh 1h.sh
 4 5 * * * cd /scripts && sh 1d.sh
+0 0 * * 0 cd /scripts && sh 1w.sh
